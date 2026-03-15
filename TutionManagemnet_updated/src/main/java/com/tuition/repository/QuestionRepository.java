@@ -1,0 +1,14 @@
+package com.tuition.repository;
+
+import com.tuition.model.Question;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import java.util.List;
+
+@Repository
+public interface QuestionRepository extends JpaRepository<Question, Long> {
+    List<Question> findBySubjectId(Long subjectId);
+    List<Question> findBySubjectIdAndIsActive(Long subjectId, Boolean isActive);
+    List<Question> findByTutorId(Long tutorId);
+    long countBySubjectId(Long subjectId);
+}
